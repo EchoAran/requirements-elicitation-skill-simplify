@@ -36,7 +36,8 @@
    ```bash
    mkdir -p .cursor/skills
    cd .cursor/skills
-   git clone https://github.com/EchoAran/requirements-elicitation-skill.git
+   git clone https://github.com/EchoAran/requirements-elicitation-skill-simplify.git
+   Rename-Item requirements-elicitation-skill-simplify requirements-elicitation-skill
    ```
 2. 创建一个适配规则文件（例如 `.cursor/rules/requirements-elicitation.mdc`），在里面使用 `@` 或相对路径指向此技能的 `SKILL.md`。
 3. 在你的 Agent 中发起需求访谈，例如：
