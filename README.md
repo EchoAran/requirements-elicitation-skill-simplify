@@ -36,7 +36,8 @@ You can easily integrate it into:
    ```bash
    mkdir -p .cursor/skills
    cd .cursor/skills
-   git clone https://github.com/EchoAran/requirements-elicitation-skill.git
+   git clone https://github.com/EchoAran/requirements-elicitation-skill-simplify.git
+   Rename-Item requirements-elicitation-skill-simplify requirements-elicitation-skill
    ```
 2. Create an adapter rule (e.g., `.cursor/rules/requirements-elicitation.mdc`) pointing the agent to `SKILL.md`.
 3. Ask your agent: *"Help me run a requirements interview for a campus marketplace app."*
