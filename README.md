@@ -9,8 +9,7 @@
 </p>
 
 <p align="center">
-  A lightweight, prompt-driven agent skill for conducting semi-structured requirements interviews.
-  Turn vague ideas into traceable requirement artifacts without complex engineering overhead.
+An Agent skill for conducting semi-structured multi-round requirements elicitation interviews, which helps turn vague ideas into traceable structured requirements outputs effortlessly.
 </p>
 
 ## What This Skill Does
@@ -23,8 +22,6 @@
   - `requirements_summary_report` (Markdown)
 
 ## Integration (Agent Environments)
-
-This skill is designed to be purely prompt-driven and extremely lightweight. It relies on the Agent's long-context memory and basic file-writing capabilities.
 
 You can easily integrate it into:
 - **Cursor** (via `.cursor/rules/`)
@@ -72,9 +69,6 @@ At every turn, the agent silently executes:
 4. **Detect Contradictions**: Flag conflicts.
 5. **Select Topic & Generate Question**: Output exactly one focused question.
 6. **Persist State**: Overwrite the JSON file.
-
-## Why Lightweight?
-This edition strips away thousands of lines of complex Python state-management scripts (MVCC, atomic commits, rollback checkpoints) from the original design. It embraces the fact that modern AI Agents have robust context windows and can maintain state efficiently via simple file overwrites (`write_file`), making the skill drastically more reliable and easier to deploy.
 
 ## License
 Proprietary (see `SKILL.md` frontmatter).
