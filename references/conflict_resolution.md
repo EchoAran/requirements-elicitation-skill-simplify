@@ -1,6 +1,7 @@
 # conflict resolution
 
 Use this file to detect, record, and resolve contradictory requirement statements.
+Load `examples\contradiction_resolution_example.mdd`, which is an example file. You can follow its example.
 
 ## What counts as contradiction
 

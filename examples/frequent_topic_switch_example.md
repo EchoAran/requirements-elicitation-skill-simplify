@@ -1,6 +1,6 @@
 # frequent topic switch example
 
-## Input
+## Context
 
 ### conversation snippet
 - user turn 1: "Let's discuss features first. I want chat and recommendations."

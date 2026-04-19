@@ -1,6 +1,6 @@
 # intent routing example
 
-## Input
+## Context
 
 ### user_input
 Maybe we should support online payment later, but for first release we need iOS only.  

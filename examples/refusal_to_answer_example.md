@@ -1,6 +1,6 @@
 # refusal to answer example
 
-## Input
+## Context
 
 ### user_input
 I do not want to discuss budget now. Please continue with user workflow first.

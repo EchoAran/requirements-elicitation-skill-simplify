@@ -1,8 +1,8 @@
 ---
 name: requirements-elicitation-skill
 description: >-
-  Trigger when user wants to discuss a product idea, clarify software requirements, 
-  or write a PRD. Conducts a guided, semi-structured interview to extract workflows, 
+  Trigger when user wants to discuss a product idea, clarify software requirements.
+  Conducts a guided, semi-structured interview to extract workflows, 
   constraints, priorities, and resolve contradictions step by step.
 license: Proprietary
 version: 3.0.0
@@ -29,37 +29,41 @@ For every user reply, you MUST execute the following sequence internally before 
 
 ### Step 1: Check Phase & Completion
 - Read `references/checkpoints.md` to evaluate the current state.
-- **Branch A (`start`)**: If no framework exists, proceed to Step 2 to initialize it.
+- **Branch A (`start`)**: This means the interview had just begun. Please proceed with the logic of step 2.
 - **Branch B (`complete`)**: If the qualitative checklist is fully met (or the user forces a stop), transition to completion.
   - Load `assets/requirements_report_format.md` and `examples/summarize_example.md`.
+  - Delete the file `state/interview_framework.json`.
   - Output the final structured requirements summary to the user.
   - End the interview.
-- **Branch C (`runtime`)**: If gaps or ambiguities remain, proceed to Step 2.
+- **Branch C (`runtime`)**: This means the interview is ongoing. Please proceed with the logic of step 2.
 
-### Step 2: Classify Intent
-- Read `references/intent_routing.md`.
-- Classify the user's newest input (e.g., is it an explicit requirement, an exploratory idea, or a constraint?).
-- Decide whether to treat it as a confirmed fact or a tentative assumption that needs confirmation.
-
-### Step 3: Update Framework (Memory & JSON)
+### Step 2: Update Framework (Memory & JSON)
 - Read `references/update_framework.md`.
 - **Structural Edit**: Add/remove topics or slots if the scope has fundamentally changed.
 - **Slot Filling**: Fill slot values based on the classified intent. You MUST adhere to the strict Status-Confidence Validity Matrix.
 
-### Step 4: Detect Contradictions
+### Step 3: Detect Contradictions
 - Read `references/conflict_resolution.md`.
 - Compare the new input against previously filled slots.
 - If claims conflict, mark the affected slots as `conflicted` and register the contradiction.
 
-### Step 5: Select Topic & Generate Question
-- Read `references/select_current_topic.md` and `references/topic_dependency_map.md`.
-- Choose ONE focused topic to drive the next turn. **Rule**: Always prioritize resolving high-impact contradictions before moving to empty topics.
-- Read `references/generate_speak.md`.
+### Step 4: Classify Intent
+- Read `references/intent_routing.md`.
+- Classify the user's newest input (e.g., is it an explicit requirement, an exploratory idea, or a constraint?).
+- Decide whether to treat it as a confirmed fact or a tentative assumption that needs confirmation.
+
+### Step 5: Select Topic 
+- Read `references/select_current_topic.md` and `references/topic_dependency_map.md`,determine the topics for the subsequent interviews.
+- Choose ONE focused topic to drive the next turn.
+
+### Step 6: Generate Question
+- Read `references/generate_speak.md`. Ask the user questions regarding the chosen topic in the fifth step.
 - Generate exactly **ONE** focused question or confirmation for the user. Do not overwhelm the user with multiple questions at once.
 
-### Step 6: Persist State
+### Step 7: Persist State
 - Overwrite `state/interview_framework.json` with the latest state.
-- Deliver your generated question (from Step 5) to the user.
+- Deliver your generated question (from Step 5) to the user (Just need to present the question to the user).
+- Only the interview questions need to be presented, and avoid providing summary at each stage.
 
 ## Reference Loading Matrix
 
@@ -68,11 +72,11 @@ To save context, load the following files *only* when their specific step in the
 | Step / Runtime Need | Required File(s) | Optional Examples (Load if stuck) |
 | :--- | :--- | :--- |
 | **1. Phase Decision** | `references/checkpoints.md` | - |
-| **2. Intent Classification** | `references/intent_routing.md` | `examples/intent_routing_example.md` |
-| **3. Framework Update** | `references/update_framework.md` | `examples/new_framework_example.md`, `examples/fill_framework_example.md` |
-| **4. Contradiction Handling**| `references/conflict_resolution.md` | `examples/contradiction_resolution_example.md` |
-| **5a. Topic Selection** | `references/select_current_topic.md`, `references/topic_dependency_map.md` | `examples/select_current_topic_example.md` |
-| **5b. Utterance Gen** | `references/generate_speak.md` | `examples/generate_speak_example.md` |
+| **2. Framework Update** | `references/update_framework.md` | `examples/new_framework_example.md`, `examples/fill_framework_example.md` |
+| **3. Contradiction Handling**| | `examples/contradiction_resolution_example.md` |
+| **4. Intent Classification** | `references/intent_routing.md` | `examples/intent_routing_example.md` |
+| **5. Topic Selection** | `references/select_current_topic.md`, `references/topic_dependency_map.md` | `examples/select_current_topic_example.md` |
+| **6. Utterance Gen** | `references/generate_speak.md` | `examples/generate_speak_example.md` |
 | **Completion** | `assets/requirements_report_format.md` | `examples/summarize_example.md` |
 
 ## Important Guardrails

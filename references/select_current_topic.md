@@ -62,3 +62,6 @@ When multiple candidates are valid, rank with:
 - selecting topics solely by original order when the conversation has moved elsewhere
 
 Reference `examples/select_current_topic_example.md` when needed.
+
+## Note
+`examples\frequent_topic_switch_example.md` and `examples\refusal_to_answer_example.md` are two special cases where the topic needs to be switched.

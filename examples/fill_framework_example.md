@@ -1,6 +1,6 @@
 # fill framework example
 
-## Input
+## Context
 
 ### current_framework
 ```json

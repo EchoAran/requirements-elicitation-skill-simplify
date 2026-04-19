@@ -1,6 +1,6 @@
 # summarize example
 
-## Input
+## Context
 
 ### final_framework
 ```json
@@ -1236,25 +1236,3 @@ The requirement set is structurally usable for next-step solution design, but tw
 ## Appendix B. Raw Notes
 - Placeholder for additional observations captured during interview and synthesis.
 ```
-
-## Post-Summary Lifecycle Transition (Required)
-
-After this summarize flow finishes, do not hard-delete the session immediately.
-Follow the current two-phase lifecycle model:
-
-1. Confirm final summary has been generated successfully.
-2. Mark the session as closed:
-   - `metadata.status = "closed"`
-   - `metadata.closed_at = <timestamp>`
-   - `framework.session.status = "closed"`
-   - `framework.session.closed_at = <timestamp>`
-3. Persist the closure as a new immutable revision under:
-   - `state/sessions/{session_id}/revisions/r{n}/`
-   - then atomically switch `state/sessions/{session_id}/CURRENT` to that revision.
-4. Keep checkpoints and revision history for delayed cleanup; do not remove the session directory in this step.
-5. Cleanup job behavior:
-   - archive only sessions already marked `closed`
-   - delete only after retention threshold from `state/archive/`
-6. Conversation mapping behavior:
-   - remove `conversation_index.json` mapping during archive/delete transition
-   - archived sessions are not restored through the old `conversation_id` mapping.

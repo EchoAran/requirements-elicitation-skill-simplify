@@ -1,6 +1,6 @@
 # modify framework example
 
-## Input
+## Context
 
 ### current_framework
 ```json

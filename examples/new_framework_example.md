@@ -1,6 +1,6 @@
 # new framework example
 
-## Input
+## Context
 
 ### user_request
 We want to build a campus second hand trading app for students.

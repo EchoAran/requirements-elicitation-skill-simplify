@@ -8,6 +8,7 @@ Before filling values, decide whether the framework needs structural change.
 
 **At `start`:**
 Initialize a compact topic set that is sufficient to start elicitation. Prefer 5 to 8 topics.
+Load `examples\new_framework_example.md`, which is an example file. You can follow its example.
 A good default set is:
 - product objective
 - target users and stakeholders
@@ -18,6 +19,7 @@ A good default set is:
 
 **At `runtime`:**
 Make a structural edit only when at least one of the following applies:
+Load `examples\modify_framework_example.md`, which is an example file. 
 - the user introduces a genuinely new requirement area
 - an existing topic is too broad and blocks precise questioning
 - two topics are overlapping and causing duplicate questions
@@ -27,6 +29,7 @@ Make a structural edit only when at least one of the following applies:
 ## 2. Filling Values (Slot Filling)
 
 Update the framework by writing newly grounded information into the appropriate slots.
+Load `examples\fill_framework_example.md`, which is an example file. You can follow its example.
 
 ### Evidence rules
 Record information using these confidence levels:
@@ -58,4 +61,3 @@ If incoming information would violate the matrix:
 - If evidence is weak, store it as an open question instead of a filled slot.
 - Do not invent requirements.
 - Do not silently upgrade assumptions into facts.
-- Do not dump the whole framework every turn unless the user asks for it.
